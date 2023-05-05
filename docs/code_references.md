@@ -1,1 +1,1 @@
-*** run the GitHub action build-code-references.yml to create this file ***
+run the GitHub action build-code-references.yml to create the input of this file
