@@ -1,3 +1,3 @@
-<!-- import:docs/index.md -->
+<!-- include:docs/index.md -->
 
-<!-- import:docs/quick_start_quide.md -->
+<!-- include:docs/quick_start_quide.md -->
