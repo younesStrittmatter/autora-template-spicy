@@ -10,3 +10,4 @@ nav:
 - Examples:
   - Basic Usage: 'basic_usage.ipynb'
   - Additional Example: 'additional_example.ipynb'
+- Code References: 'code_references.md'
