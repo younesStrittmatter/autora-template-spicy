@@ -72,6 +72,7 @@ Update the metadata under `project` in the pyproject.toml file to include name, 
 Also, update the URL for the repository under `project.urls`.
 
 ### Publishing with GitHub actions
+**You'll need a secret with a piPY token for this to work with the name PYPI_API_TOKEN**
 To automate the publishing process for your package, you can use a GitHub action instead of Twine:
 - Add the GitHub action to the `.github/workflows` directory: For example, you can use the default publishing action:
   - Navigate to the `actions` on the GitHub website of your repository.
