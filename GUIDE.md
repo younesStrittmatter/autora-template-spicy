@@ -41,6 +41,22 @@ You should also add tests. These can be [doctests](https://docs.python.org/3/lib
 - Update the `mkdocs.yml` file to reflect structure of the documentation. You can add additional pages and examples here.
 - Update the README.md file 
 
+### Spicy Documentation:
+
+You can use the github actions in this version of the template to quickly generate streamlined documentation:
+#### Build index and quick-start from toml file:
+- after updating the toml file use the build-pages-from-toml.yml github-action to auto generate an index and quick-start file
+- this creates a pull request with the changes
+- after merging the pull request you can customize the index.md and quick-start.md file
+#### Building code references
+- after adding code to the src file you can use the build-code-references.yml action to generate static markdown code from the docstrings
+#### Generating the README.md
+- instead of updating the README.md file you can update the README-src.md file and use include statements to include parts of your other documentation. This makes the documentation more coherent.
+- Use the build-reamde.yml action to generate the README.md file from README-src.md
+
+***All the above actions are customizable in the respective yml files to use different src or output files***
+
+
 ## Add new dependencies 
 
 In pyproject.toml add the new dependencies under `dependencies`
@@ -55,18 +71,6 @@ pip install -e ".[dev]"
 Update the metadata under `project` in the pyproject.toml file to include name, description, author-name, author-email and version.
 Also, update the URL for the repository under `project.urls`.
 
-- Follow the guide here: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-
-Build the package using:
-```shell
-python -m build
-```
-
-Publish the package to PyPI using `twine`:
-```shell
-twine upload dist/*
-```
-
 ### Publishing with GitHub actions
 To automate the publishing process for your package, you can use a GitHub action instead of Twine:
 - Add the GitHub action to the `.github/workflows` directory: For example, you can use the default publishing action:
@@ -77,29 +81,6 @@ To automate the publishing process for your package, you can use a GitHub action
 - Generate release notes automatically by clicking `generate release`, which adds the markdown of the merged pull requests and the contributors.
 - If this is a pre-release check the box `set as pre-release`
 - Click on `publish release`
-
-### Dynamic versioning
-To automatically generate the version number for each release, you can use dynamic versioning instead of updating the version number manually. To set this up, you need to alter the `pyproject.toml` file:
-- Replace `version = "..."` with `dynamic = ["version"]` under `project`
-- Replace the `build-system` section with the following:
-```toml
-[build-system]
-requires = ["setuptools", "setuptools_scm"]
-build-backend = "setuptools.build_meta"
-```
-- Add a new section to the `pyproject.toml` file:
-```toml
-[tool.setuptools_scm]
-```
-
-#### Dynamic versioning: Publishing using `twine`
-If you are using dynamic versioning with Twine, follow these steps to publish your package:
-- Commit all of your changes.
-- Tag the commit: Create an annotated Git tag at the commit you want to release. This is typically the most recent commit on your main branch. For example, you can run `git tag -a 1.0.0a` to create a tag named "1.0.0a" at the current commit.
-- Build and release the package using Twine as described in the above section.
-
-#### Dynamic versioning: Publishing via GitHub actions
-You can use dynamic versioning with the GitHub action described in the previous section. The workflow remains the same, but you don't have to update the version in the `pyproject.toml` file. 
 
 ## Workflows
 ...
